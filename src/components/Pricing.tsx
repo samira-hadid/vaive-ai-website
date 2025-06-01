@@ -9,9 +9,8 @@ const PricingCard = ({ plan, index }: { plan: any, index: number }) => {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ${
-        isIntersecting ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-16'
-      }`}
+      className={`transition-all duration-1000 ${isIntersecting ? 'opacity-100' : 'opacity-0 translate-y-16'
+        }`}
       style={{ animationDelay: `${index * 0.2}s` }}
     >
       <div className={`relative group h-full ${plan.popular ? 'scale-100 sm:scale-105' : ''}`}>
@@ -22,11 +21,10 @@ const PricingCard = ({ plan, index }: { plan: any, index: number }) => {
             </span>
           </div>
         )}
-        
-        <div className={`absolute -inset-0.5 bg-gradient-to-r from-white/10 to-gray-300/5 rounded-3xl opacity-0 transition-opacity duration-700 ${
-          plan.popular ? 'opacity-100' : 'group-hover:opacity-100'
-        }`}></div>
-        
+
+        <div className={`absolute -inset-0.5 bg-gradient-to-r from-white/10 to-gray-300/5 rounded-3xl opacity-0 transition-opacity duration-700 ${plan.popular ? 'opacity-100' : 'group-hover:opacity-100'
+          }`}></div>
+
         <div className="relative bg-black/50 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 h-full hover:bg-black/70 hover:border-white/20 transition-all duration-700">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h3 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6 tracking-wide">{plan.name}</h3>
@@ -46,17 +44,17 @@ const PricingCard = ({ plan, index }: { plan: any, index: number }) => {
               </li>
             ))}
           </ul>
-
-          <Button 
-            className={`w-full rounded-full font-light transition-all duration-500 py-4 sm:py-5 lg:py-6 text-sm sm:text-base tracking-wide ${
-              plan.popular 
-                ? 'bg-white text-black hover:bg-gray-100 hover:scale-105' 
+          <a href={plan.btnLink}>
+            <Button
+              className={`w-full rounded-full font-light transition-all duration-500 py-4 sm:py-5 lg:py-6 text-sm sm:text-base tracking-wide ${plan.popular
+                ? 'bg-white text-black hover:bg-gray-100 hover:scale-105'
                 : 'bg-transparent text-white hover:bg-white/10 border border-white/30 hover:border-white/60'
-            }`}
-            size="lg"
-          >
-            Get Started
-          </Button>
+                }`}
+              size="lg"
+            >
+              {plan.btnLabel}
+            </Button>
+          </a>
         </div>
       </div>
     </div>
@@ -71,7 +69,7 @@ const Pricing = () => {
       name: "Free",
       price: "₹0",
       period: "per month",
-      users:" ",
+      users: " ",
       description: "Explore core features and experience the platform at no cost.",
       features: [
         "Up to 5 queries/day",
@@ -80,13 +78,15 @@ const Pricing = () => {
         "Clause-Level Contract Analysis",
         "Conversational AI for GST Reply Drafting -  2 lifetime uploads"
       ],
+      btnLabel: 'Get started',
+      btnLink: 'https://platform.vaive.ai/',
       popular: false
     },
     {
       name: "Individual",
       price: "₹600",
       period: "per month",
-      users:"  ",
+      users: "  ",
       description: "Designed for independent practitioners ready to simplify GST workflows.",
       features: [
         "Unlimited queries",
@@ -97,13 +97,15 @@ const Pricing = () => {
         "Access to the latest GST updates",
         "Dedicated Support Team",
         "Access to high end AI model"
-      ]
+      ],
+      btnLabel: 'Contact us',
+      btnLink: 'https://tally.so/r/wzoKGg',
     },
     {
       name: "Firm",
       price: "₹2,000",
       period: "per month",
-      users:"upto 4 users",
+      users: "upto 4 users",
       description: "Advanced solutions for growing teams with complex litigation workflows.",
       features: [
         "Unlimited queries",
@@ -119,18 +121,19 @@ const Pricing = () => {
         "Dedicated Support Team",
         "Access to high end AI model"
       ],
-      popular: false
+      popular: false,
+      btnLabel: 'Contact us',
+      btnLink: 'https://tally.so/r/wzoKGg',
     }
   ];
 
   return (
     <section id="pricing" className="py-10 sm:py-10 lg:py-10 bg-black text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
+        <div
           ref={titleRef}
-          className={`text-center mb-24 sm:mb-28 lg:mb-32 transition-all duration-1000 ${
-            titleIntersecting ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-16'
-          }`}
+          className={`text-center mb-24 sm:mb-28 lg:mb-32 transition-all duration-1000 ${titleIntersecting ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-16'
+            }`}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-8 sm:mb-10 lg:mb-12 tracking-tight font-serif leading-tight">
             Simple, Transparent
@@ -149,12 +152,13 @@ const Pricing = () => {
 
         <div className="text-center px-4">
           <p className="text-white/50 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base">More than 4 users? No problem—contact us for a custom solution that fits your team.</p>
-          <Button 
-            variant="ghost" 
-            className="border border-white/20 text-white hover:bg-white/5 hover:border-white/40 rounded-full px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 font-light tracking-wide text-sm sm:text-base w-full sm:w-auto"
+          <a className='hover:text-white' href="https://tally.so/r/wzoKGg"><Button
+            variant="ghost"
+            className="border border-white/20 text-white hover:text-white hover:bg-white/10 hover:border-white/40 rounded-full px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 font-light tracking-wide text-sm sm:text-base w-full sm:w-auto"
           >
             Contact Sales for Custom Plans
           </Button>
+          </a>
         </div>
       </div>
     </section>

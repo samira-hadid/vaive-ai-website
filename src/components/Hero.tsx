@@ -31,20 +31,22 @@ const Hero = () => {
           </div>
 
           <div className="animate-fade-in flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16 sm:mb-18 lg:mb-20 px-4" style={{ animationDelay: '0.6s' }}>
-            <Button 
+            <a href="https://tally.so/r/wzoKGg"><Button 
               size="lg" 
               className="bg-white text-black hover:bg-gray-100 text-base sm:text-lg px-8 sm:px-12 md:px-4 lg:px-4 py-4 sm:py-5 lg:py-6 rounded-full font-medium transition-all duration-500 hover:scale-105 border-0 font-sans tracking-wide w-full sm:w-auto"
             >
-              <a href="https://tally.so/r/wzoKGg">Request a Demo</a>
+              Request a Demo
             </Button>
-            <Button 
+            </a>
+            <a className="hover:text-white" href="https://platform.vaive.ai/"><Button 
               size="lg" 
               variant="ghost" 
-              className="border border-white/60 text-white hover:bg-white/5 hover:border-white/40 text-base sm:text-lg px-14 sm:px-14 lg:px-16 py-4 sm:py-5 lg:py-6 rounded-full font-medium transition-all duration-500 group font-sans tracking-wide w-full sm:w-auto"
+              className="border border-white/60 text-white hover:text-white hover:bg-white/10 hover:border-white/40 text-base sm:text-lg px-14 sm:px-14 lg:px-16 py-4 sm:py-5 lg:py-6 rounded-full font-medium transition-all duration-500 group font-sans tracking-wide w-full sm:w-auto"
             >
               
-              <a href="https://platform.vaive.ai/">Try Now</a>
+              Try Now
             </Button>
+            </a>
           </div>
 
           <div className="animate-fade-in text-xs sm:text-sm text-white/40 font-light tracking-widest uppercase px-4" style={{ animationDelay: '0.9s' }}>

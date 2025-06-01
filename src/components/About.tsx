@@ -27,7 +27,7 @@ const About = () => {
           <div 
             ref={contentRef}
             className={`transition-all duration-1000 ${
-              contentIntersecting ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-16'
+              contentIntersecting ? 'opacity-100' : 'opacity-0 translate-y-16'
             }`}
           >
             <div className="text-base sm:text-lg lg:text-xl text-white/70 leading-relaxed space-y-8 sm:space-y-10 lg:space-y-12 font-light tracking-wide">
