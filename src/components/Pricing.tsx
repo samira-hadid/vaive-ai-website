@@ -29,7 +29,9 @@ const PricingCard = ({ plan, index }: { plan: any, index: number }) => {
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h3 className="text-2xl sm:text-3xl font-light text-white mb-4 sm:mb-6 tracking-wide">{plan.name}</h3>
             <div className="mb-4 sm:mb-6">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight">{plan.price}</div>
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight">
+                <span className="text-2xl sm:text-3xl lg:text-4xl opacity-60 line-through">{plan.strikeThroughPrice}</span>&nbsp;{plan.price}
+              </div>
               <div className="text-white/50 ml-2 sm:ml-3 font-light tracking-wide text-sm sm:text-base">{plan.period}</div>
               <div className="min-h-6 text-white/50 ml-2 sm:ml-3 font-light tracking-wide text-sm sm:text-base">{plan.users}</div>
             </div>
@@ -37,10 +39,12 @@ const PricingCard = ({ plan, index }: { plan: any, index: number }) => {
           </div>
 
           <ul className="space-y-3 sm:space-y-3 lg:space-y-4 mb-8 sm:mb-10 lg:mb-12">
-            {plan.features.map((feature: string, featureIndex: number) => (
+            {plan.features.map((feature: string[], featureIndex: number) => (
               <li key={featureIndex} className="flex items-start text-white/70 font-light">
                 <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white/50 mr-3 sm:mr-4 mt-0.5 sm:mt-1 flex-shrink-0" />
-                <span className="text-xs sm:text-sm leading-relaxed tracking-wide">{feature}</span>
+                <span className="text-xs sm:text-sm leading-relaxed tracking-wide">
+                  {feature.map((featureItem)=>{ return <>{featureItem}<br/></>})}
+                </span>
               </li>
             ))}
           </ul>
@@ -72,11 +76,11 @@ const Pricing = () => {
       users: " ",
       description: "Explore core features and experience the platform at no cost.",
       features: [
-        "Up to 5 queries/day",
-        "Advanced GST Query Assistant",
-        "Full-Suite Drafting Tools",
-        "Clause-Level Contract Analysis",
-        "Conversational AI for GST Reply Drafting -  2 lifetime uploads"
+        ["Up to 5 queries/day"],
+        ["Advanced GST Query Assistant"],
+        ["Full-Suite Drafting Tools"],
+        ["Clause-Level Contract Analysis"],
+        ["Conversational AI for GST Reply Drafting (2 lifetime uploads)"]
       ],
       btnLabel: 'Get started',
       btnLink: 'https://platform.vaive.ai/',
@@ -84,44 +88,47 @@ const Pricing = () => {
     },
     {
       name: "Individual",
-      price: "₹600",
+      strikeThroughPrice: "₹1,200",
+      price: "₹800",
       period: "per month",
       users: "  ",
       description: "Designed for independent practitioners ready to simplify GST workflows.",
       features: [
-        "Unlimited queries",
-        "Advanced GST Query Assistant",
-        "Full-Suite Drafting Tools",
-        "Clause-Level Contract Analysis",
-        "Conversational AI for GST Reply Drafting -  10 monthly uploads",
-        "Access to the latest GST updates",
-        "Dedicated Support Team",
-        "Access to high end AI model"
+        ["Unlimited queries"],
+        ["Advanced GST Query Assistant"],
+        ["Full-Suite Drafting Tools"],
+        ["Clause-Level Contract Analysis"],
+        ["Conversational AI for GST Reply Drafting (5 monthly uploads)"],
+        ["Access to the latest GST updates"],
+        ["GST Litigation Management"],
+        ["Automatic GST Notice Fetching", "(every 15 days)*"],
+        ["Client Management System", "(up to 25 GSTINs)*"]
+
       ],
       btnLabel: 'Contact us',
       btnLink: 'https://tally.so/r/wzoKGg',
     },
     {
       name: "Firm",
-      price: "₹2,000",
+      strikeThroughPrice: "₹3,500",
+      price: "₹2,200",
       period: "per month",
-      users: "upto 4 users",
+      users: "upto 3 users*",
       description: "Advanced solutions for growing teams with complex litigation workflows.",
       features: [
-        "Unlimited queries",
-        "Advanced GST Query Assistant",
-        "Full-Suite Drafting Tools",
-        "Clause-Level Contract Analysis",
-        "Conversational AI for GST Reply Drafting -  30 monthly uploads",
-        "GST Litigation Management",
-        "Automatic GST Notice Fetching",
-        "Client Management System",
-        "Invoice & EL Generation",
-        "Access to the latest GST updates",
-        "Dedicated Support Team",
-        "Access to high end AI model"
+        ["Unlimited queries"],
+        ["Advanced GST Query Assistant"],
+        ["Full-Suite Drafting Tools"],
+        ["Clause-Level Contract Analysis"],
+        ["Conversational AI for GST Reply Drafting (15 monthly uploads)"],
+        ["GST Litigation Management"],
+        ["Automatic GST Notice Fetching", "(every 15 days)*"],
+        ["Client Management System", "(upto 100 GSTINs)*"],
+        ["Invoice & EL Generation"],
+        ["Access to the latest GST updates"],
+        ["Dedicated Support Team"],
+        ["Access to high end AI model"]
       ],
-      popular: false,
       btnLabel: 'Contact us',
       btnLink: 'https://tally.so/r/wzoKGg',
     }
@@ -151,7 +158,7 @@ const Pricing = () => {
         </div>
 
         <div className="text-center px-4">
-          <p className="text-white/50 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base">More than 4 users? No problem—contact us for a custom solution that fits your team.</p>
+          <p className="text-white/50 mb-6 sm:mb-8 font-light tracking-wide text-sm sm:text-base"><sup>*</sup>Need a custom plan? We're happy to help — just get in touch!</p>
           <a className='hover:text-white' href="https://tally.so/r/wzoKGg"><Button
             variant="ghost"
             className="border border-white/20 text-white hover:text-white hover:bg-white/10 hover:border-white/40 rounded-full px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 font-light tracking-wide text-sm sm:text-base w-full sm:w-auto"
